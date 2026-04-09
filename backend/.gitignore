@@ -1,0 +1,8 @@
+__pychache__/
+build/
+dist/
+wheels/
+*.egg-info
+
+.venv
+.env
