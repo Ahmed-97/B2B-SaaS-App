@@ -13,3 +13,8 @@ dependencies = [
     "svix>=1.90.0",
     "uvicorn>=0.44.0",
 ]
+
+[tool.uv.workspace]
+members = [
+    "backend",
+]
