@@ -68,3 +68,43 @@ async def get_current_user(request:Request) -> AuthUser:
         )
 
     return AuthUser(user_id=user_id, org_id=org_id, org_permissions=org_permissions)
+
+
+def require_view(user: AuthUser = Depends(get_current_user)) -> AuthUser:
+    if not user.can_view:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="View permission required"
+        )
+
+    return user
+
+
+def require_create(user: AuthUser = Depends(get_current_user)) -> AuthUser:
+    if not user.can_create:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="View permission required"
+        )
+
+    return user
+
+
+def require_delete(user: AuthUser = Depends(get_current_user)) -> AuthUser:
+    if not user.can_delete:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="View permission required"
+        )
+
+    return user
+
+
+def require_edit(user: AuthUser = Depends(get_current_user)) -> AuthUser:
+    if not user.can_edit:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="View permission required"
+        )
+
+    return user
